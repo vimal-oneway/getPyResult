@@ -18,13 +18,13 @@ export class Dom {
     });
 
     const page = await browser.newPage();
-
+    page.setDefaultTimeout(20000);
     await page.goto(url);
 
     // Wait for the table to be created by PHP
     try {
       await page.waitForSelector("table");
-    } catch (err) {
+    } catch {
       return {
         success: false,
         message: "Network error",
@@ -90,7 +90,11 @@ export class Dom {
     let j = 1;
 
     for (let i = stRollNo; i <= endRollNo; i++) {
-      const rollNo = `21ca${i.toString().padStart(4, "0")}`;
+      const rollNo = `${fristRollNo.slice(0, 2)}CA${i
+        .toString()
+        .padStart(4, "0")}`;
+
+      console.log(chalk.blue(`Fetching data for ${rollNo}...`));
 
       let TotalGradePoint: number = 0;
 
