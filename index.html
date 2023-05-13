@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<link rel="shortcut icon" type="image/jpg" href="img/favicon.jpg" />	
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Examination Results</title>
+ <link rel="stylesheet" type="text/css" href="css/basic.css" /> 
+<!-- <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />   -->
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="js/jquery.corner.js"></script>
+<script type="text/javascript" src="js/jscript.js"></script>
+<script type="text/javascript" src="js/curve-min.js"></script>
+ 	<link rel="stylesheet" href="jquery-ui-1.9/themes/base/jquery.ui.all.css">
+	<script src="jquery-ui-1.9/external/jquery.bgiframe-2.1.2.js"></script>  
+	<script src="jquery-ui-1.9/ui/jquery.ui.core.js"></script>
+	<script src="jquery-ui-1.9/ui/jquery.ui.widget.js"></script>	 
+	<script src="jquery-ui-1.9/ui/jquery.ui.dialog.js"></script>
+	<script src="jquery-ui-1.9/ui/jquery.ui.menu.js"></script>
+	 
+	<script src="jquery-ui-1.9/ui/jquery.ui.tabs.js"></script>  
+ 
+<script type="text/javascript">
+		$(function(){	
+		 
+		  $('#main_frame').corner("5px tr tl");
+		  $('.header_main_div').corner("5px tr tl");
+		 $('.header_right_div').corner("5px");
+		 $('#Footer').corner("bottom 5px");
+		   
+		
+		 
+		
+		});
+</script>				<script type="text/javascript" src="js/mask/ui.core.js"></script>
+				<script type="text/javascript" src="js/mask/ui.mask.js"></script> 
+				
+		<script type="text/javascript">
+			$(function()
+			{
+				$('.index_label_div').corner("5px").css("border","1px solid #336699");	
+				$('.messageboard-div').corner("5px").css("border","1px solid #336699");	
+				$('.submit_div_button').corner("5px");	
+				$('.div_app_form_center_blue').corner("5px").css("border","1px solid #336699");
+				$('#tabs').tabs();  
+				$('.ui-tabs .ui-tabs-nav li a').corner("tl tr");
+				$("#guidelines").load("links/guidelines.html");  
+									$('.reg_no_div').corner("bl br").css("border","1px solid #6F6868");	
+					$('.submit_div_button').corner("5px");	
+					$('.div_app_form_center_blue').corner("tl tr");
+					$('.div_app_form_center_black').corner("tl tr");
+					$('#dialog').dialog({
+						autoOpen: false,
+						modal: true,
+						width: 542,
+						resizable: false 
+					});    
+								url_object=GetUrlParameters();
+				var r=url_object['r']; 
+				var e=url_object['e']; 
+				$("#result_error_div").hide();
+				DisplayStudentResult(r,e); 
+			});
+		</script>
+	</head>
+	<body>
+		<div id='main_frame'>
+			<div class='header_main_div'>
+				<div class='header_left_div' onclick='home();'>
+		<div class='header_log_left_div'><img height=103 width=120 src="img/logo.jpg"></div>
+		</div>
+		<div class='header_right_div'>
+		<div class='header_right_txt_div'>
+		PONDICHERRY UNIVERSITY<br>
+		<span  id='span_address'>Kalapet, Pondicherry<br></span>  
+		</div><div  onclick="home();" style="color: blue;
+    cursor: pointer;
+    float: right;
+    font-size: 13px;
+    position: relative;
+    right: -35px;;">Home</div>
+		</div>
+
+		<div style='clear:both;'>
+			
+	  
+				<div style='height:auto;overflow:auto;background:#FFFFFF;'>
+					<div style="margin-top: 6px; border-bottom: solid 1px #979595;
+						font-size: 12px; font-weight: bold;height:29px;background:#FFFFFF;">
+						<div id="ContentPlaceHolder1_resultDate" style='float:left;'>
+							<div style="height: 20px; width: 314px; text-align: left;float:left;
+								 padding-left: 10px; padding-top: 7px; color: Red" 
+								 id="ResultpersonalLeftDiv">
+								<img src="img/th_arrow_anim_left.gif" width=46 height=16></img>
+								<span style="font-weight: bold;" id="ContentPlaceHolder1_lblDate">
+									Provisional Result Announced Date: 
+								</span>
+							</div>
+						</div>
+						<div id="ContentPlaceHolder1_lastDate">
+							<div style="height: 20px; width: 600px; float: right; text-align: right; padding-right: 10px; padding-top: 12px; color: Red"id="ResultpersonalRightDiv">
+								<span style="font-weight: bold;" id="ContentPlaceHolder1_lblExmLastDate"></span>
+							</div>
+						</div>
+					</div>
+					<div id='tabs'>
+						<ul> 
+							<li><a href='#index_main_page_result'>Results</a> </li>
+							
+													</ul>
+						<div id="index_main_page_result">
+							<div id='result_error_div' style='display:none;'> </div>
+							<div id='result_success_div'> </div>
+						</div> 
+													<div id="revaluation" style='min-height:100px;margin-bottom:15px;' ></div>	
+					<!--		<div id="guidelines" style='min-height:200px;overflow:auto;'></div> -->
+											<!--<div id="applications" style='min-height:200px;margin:0 auto;'> 
+							<div style='margin:0 auto; width: 250px;' id='mobile_no_div'>
+								<div style="height:28px;width:230px; padding:2px;margin-left:6px;
+									margin-right: 5px;" align='center' class="div_app_form_center_black">
+									<a style='font-family:Trebuchet MS;word-spacing: 4px;text-decoration:none;
+									color:#FFFFFF;  line-height: 29px;'>Results</a>
+								</div>	
+								<div class='reg_no_div' style="height:100px;width:228px; 
+									 padding:2px;margin-left:6px; margin-right: 5px;">
+									<div id="hTabTopmainEach" style='height: 47px;'>
+										<b>Enter Mobile No : </b>
+										<input tabindex=1 type="text" id='FMOBILE' 
+											style="height:19px;width:195px;font-family: Arial;
+											padding-left: 3px; border: 1px solid #8B8B8B; 
+											font-size: 13px; color: #000000;"    maxlength="15" value="" >
+									</div>
+									<div style="background: none repeat scroll 0 0 #EECF02;
+										border-radius: 5px 5px 5px 5px;
+										box-shadow: 1px 1px 5px #888888;
+										float: right;height: 22px;margin-right: 22px;padding-left: 8px;
+										width: 42px;" id="print_app_form"><span  tabindex=3 onclick="ValidateStudentMobileNo();" 
+										style="margin-left:8px;cursor: pointer; 
+										line-height: 19px;font-size:14px;font-weight:bold;">Go</span>
+									</div>
+								</div>	
+							</div>		 <!-- End  
+							<div id='your_app_div' style='margin-top:10px;'></div>
+						<!--</div> -->
+						<div id="dialog" title=""> </div>
+					</div>
+					 
+<div id="Footer">
+                    <div id="FooterInner">
+                        <div id="FooterLink">
+                            <div style="width: 350px; float: left; text-align: left; margin-left: 20px;">
+                                <!-- <a href="AboutUs.aspx">About Us</a> | <a href="TermCondition.aspx">Registration Term
+                                    Condition</a>-->
+                            </div>
+                            <div style="width: 220px; float: right;">
+                          <!--      Powered by <a style="outline: 0;" target="_blank" href="http://www.logisys.org">Logisys</a> -->
+                            </div>
+                        </div>
+                    </div>
+</div>
+  
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+ 

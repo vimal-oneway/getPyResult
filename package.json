@@ -1,0 +1,26 @@
+{
+  "name": "resultautomation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:build": "tsc --watch",
+    "dev:run": "npx nodemon ./dist/index.js",
+    "dev": "concurrently npm:dev:*",
+    "start": "tsc && node ./dist/index.js"
+  },
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "inquirer": "^9.2.2",
+    "puppeteer": "^20.2.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^20.1.3"
+  }
+}
