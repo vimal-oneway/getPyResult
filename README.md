@@ -1,5 +1,5 @@
 # getPyResult⭐
-This program can fetch the result from the puducherry uni web and convert into excel sheets. You can this code for making record of your class results.
+This program can fetch the result from the puducherry uni web and convert into excel sheets. You can use this code for making record of your class results.
 ## project set up📈.
 steps to quick start of development or execute the program. 
 
