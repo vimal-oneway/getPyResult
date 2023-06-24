@@ -90,13 +90,15 @@ export class Dom {
     let j = 1;
 
     for (let i = stRollNo; i <= endRollNo; i++) {
-      const rollNo = `${fristRollNo.slice(0, 2)}CA${i
+      const rollNo = `${fristRollNo.slice(0, 4)}${i
         .toString()
         .padStart(4, "0")}`;
+      console.log(rollNo, stRollNo, endRollNo);
 
       console.log(chalk.blue(`Fetching data for ${rollNo}...`));
 
       let TotalGradePoint: number = 0;
+      let TotalCredit: number = 0;
 
       const currentStdData: IStudentData | NetworkError =
         await this.getStudentData(url, rollNo, sem);
@@ -114,19 +116,22 @@ export class Dom {
       let currentResult = [j.toString(), stdRollNo, stdName];
 
       resultData.splice(1).forEach((element: string[]) => {
-        if (j === 1)
+        if (j === 1) {
+          TotalCredit += parseInt(element[3]);
           result[0].push(
             ...[`${element[1]}'s Grade Point`, `${element[1]}'s Grade`]
           );
+        }
         currentResult.push(...[element[4], element[6]]);
-        TotalGradePoint += parseInt(element[4]);
+        // TotalGradePoint =
+        // TotalGradePoint + parseInt(element[4]) * parseInt(element[3]);
       });
 
-      if (j === 1) result[0].push("Total Grade Point");
+      // if (j === 1) result[0].push("Total Grade Point");
       j++;
 
-      console.log(`Total Grade Point: `, chalk.yellow(TotalGradePoint));
-      currentResult.push(TotalGradePoint.toString());
+      // console.log(`Total Grade Point: `, chalk.yellow(TotalGradePoint));
+      // currentResult.push((TotalGradePoint / TotalCredit).toString());
       result.push(currentResult);
     }
 
