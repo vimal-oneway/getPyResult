@@ -18,7 +18,7 @@ export class Dom {
     });
 
     const page = await browser.newPage();
-    page.setDefaultTimeout(20000);
+    page.setDefaultTimeout(8000);
     await page.goto(url);
 
     // Wait for the table to be created by PHP
