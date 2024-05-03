@@ -18,7 +18,7 @@ export class Dom {
     });
 
     const page = await browser.newPage();
-    page.setDefaultTimeout(8000);
+    page.setDefaultTimeout(20000);
     await page.goto(url);
 
     // Wait for the table to be created by PHP
@@ -39,7 +39,7 @@ export class Dom {
       const data = [];
       for (const row of rows) {
         const cells = row.querySelectorAll(
-          "td,th"
+          "td,th",
         ) as NodeListOf<HTMLTableCellElement>;
         data.push(Array.from(cells, (cell) => cell.innerText.trim()));
       }
@@ -53,7 +53,7 @@ export class Dom {
       const data = [];
       for (const row of rows) {
         const cells = row.querySelectorAll(
-          "td,th"
+          "td,th",
         ) as NodeListOf<HTMLTableCellElement>;
         data.push(Array.from(cells, (cell) => cell.innerText.trim()));
       }
@@ -67,7 +67,7 @@ export class Dom {
   async getStudentData(
     url: string,
     rollNo: string,
-    sem: string
+    sem: string,
   ): Promise<IStudentData | NetworkError> {
     const result = await this.getDataFromWeb(`${url}?r=${rollNo}&e=${sem}`);
     return result;
@@ -77,7 +77,7 @@ export class Dom {
     url: string,
     fristRollNo: string,
     lastRollNo: string,
-    sem: string
+    sem: string,
   ) {
     const stRollNo = parseInt(fristRollNo.substring(4));
     const endRollNo = parseInt(lastRollNo.substring(4));
@@ -119,7 +119,7 @@ export class Dom {
         if (j === 1) {
           TotalCredit += parseInt(element[3]);
           result[0].push(
-            ...[`${element[1]}'s Grade Point`, `${element[1]}'s Grade`]
+            ...[`${element[1]}'s Grade Point`, `${element[1]}'s Grade`],
           );
         }
         currentResult.push(...[element[4], element[6]]);

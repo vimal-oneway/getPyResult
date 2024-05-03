@@ -23,7 +23,7 @@ class Main {
   writeDataToExcel(
     data: string[][],
     sheetName: string,
-    outputFileName: string
+    outputFileName: string,
   ) {
     let workbook;
 
@@ -43,7 +43,7 @@ class Main {
 
     // Add the new worksheet to the workbook
     const prevWorkSheetData: any = xlsx.utils.sheet_to_json(
-      workbook.Sheets[sheetName]
+      workbook.Sheets[sheetName],
     );
     const worksheet = xlsx.utils.json_to_sheet([...prevWorkSheetData, ...data]);
     workbook.Sheets[sheetName] = worksheet;
@@ -59,7 +59,7 @@ class Main {
     baseUrl: string,
     startRoll: string,
     endRoll: string,
-    sem: string
+    sem: string,
   ) {
     console.log(chalk.green("Fetching data from web..."));
 
@@ -67,7 +67,7 @@ class Main {
       baseUrl,
       startRoll,
       endRoll,
-      sem
+      sem,
     );
     this.writeDataToExcel(data, sheetName, outputFileName);
   }
@@ -89,7 +89,7 @@ class Main {
           name: "baseUrl",
           type: "string",
           message: "Enter Base Url:",
-          default: "http://exam.pondiuni.edu.in/results/result.php",
+          default: "https://exam.pondiuni.edu.in/results/result.php",
         },
         {
           name: "startRoll",
@@ -129,7 +129,7 @@ class Main {
       baseUrl,
       startRoll,
       endRoll,
-      semester
+      semester,
     );
   }
 }
